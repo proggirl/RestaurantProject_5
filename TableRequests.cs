@@ -44,6 +44,7 @@ namespace FinalProject5
             return list;
         }
        
+        //TODO: not used
         public List<IItemInterface> GetMenuItemsCustomer(string customer)
         {
             List<IItemInterface> list = new List<IItemInterface>();
@@ -55,6 +56,7 @@ namespace FinalProject5
         {
             return GetEnumerator();
         }
+
         public IEnumerator<string> GetEnumerator()
         {
             foreach(var e in menuItems)
@@ -64,6 +66,7 @@ namespace FinalProject5
         }
      
     }
+
     public interface IItemInterface
     {
         void Obtain();

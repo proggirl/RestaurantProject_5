@@ -13,18 +13,18 @@ namespace FinalProject5
 {
     public partial class Form1 : Form
     {
-       
+
         Task task1;
         Server server;
-       
+
 
         public Form1()
         {
             server = new Server();
-            InitializeComponent();           
+            InitializeComponent();
         }
-      
-     
+
+
         private async void button1_Click(object sender, EventArgs e)
         {
             int chickCount = Convert.ToInt32(txtCh.Text);
@@ -33,7 +33,7 @@ namespace FinalProject5
             string drink = comboBox1.Text;
             if (server.service.Values.Where(i => i.InProccess == true).Count() == server.service.Values.Count)
             {
-                
+
                 while (server.CustomerCount != 8)
                 {
                     button1.Enabled = false;
@@ -64,32 +64,33 @@ namespace FinalProject5
                 s += ", egg " + eggCount;
             s += " " + drink;
             listBox1.Items.Add(s);
-          
+
         }
+
+        //TODO: I ordered and sent 2 times and got this exception.
         private async void button2_Click(object sender, EventArgs e)
         {
             List<string> items;
             string eggQuality;
-          
+
             await Task.Delay(2500);
             lock (server)
             {
                 Task task2 = task1.ContinueWith(server.Send);
                 (items, eggQuality) = task2.ContinueWith(server.Serve).Result.Result;
-                
             }
             await Task.Delay(2500);
             listBox1.Items.Clear();
-            foreach(var item in items)
-                {
-                    listBox1.Items.Add(item);
-                }
-                label5.Text = eggQuality;
+            foreach (var item in items)
+            {
+                listBox1.Items.Add(item);
+            }
+            label5.Text = eggQuality;
             button2.Enabled = false;
             button1.Enabled = true;
-                        
+
         }
-                
+
         private void button4_Click(object sender, EventArgs e)
         {
 

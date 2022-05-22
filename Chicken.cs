@@ -7,17 +7,16 @@ namespace FinalProject5
     public class Chicken : CookedFood
     {
         int slice = 0;
-        int quantity=1;
-
+        int quantity = 1;
         public Chicken()
         {
         }
 
-        public  override void Obtain()
+        public override void Obtain()
         {
             base.Obtain();
         }
-        
+
         public void CutUp()
         {
             if (slice > quantity)
@@ -28,7 +27,7 @@ namespace FinalProject5
         public override void Cook()
         {
             if (slice < quantity)
-            throw new Exception("Slice are not equal quantity");
+                throw new Exception("Slice are not equal quantity");
         }
 
         public override void Serve()

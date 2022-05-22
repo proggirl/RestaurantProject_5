@@ -4,6 +4,7 @@ using System.Text;
 
 namespace FinalProject5
 {
+    //TODO: Actually we don't neccessary this MenuItem class.
     public abstract class MenuItem : IItemInterface {
 
         public MenuItemStatus Status = MenuItemStatus.Requested;
@@ -18,6 +19,7 @@ namespace FinalProject5
 
         }
     }
+
     public enum MenuItemStatus
     {
         Requested,
